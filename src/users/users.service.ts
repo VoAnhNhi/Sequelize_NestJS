@@ -5,7 +5,7 @@ import { user } from 'src/models/users.model';
 export class UsersService {
     constructor(@InjectModel(user) private readonly userModel:typeof  user){
     }
-    async findOneUser(username: string):Promise<user>{
+    async findUser(username: string):Promise<user>{
         return this.userModel.findOne({
             where:{
                 username

@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { user } from './models/users.model';
 import { data } from './models/data.model';
 import { DataModule } from './data/data.module';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [SequelizeModule.forRoot({
     dialect:'postgres',
@@ -19,7 +20,7 @@ import { DataModule } from './data/data.module';
       timestamps:false
     },
     synchronize:false,
-  }), UsersModule, DataModule],
+  }), UsersModule, DataModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

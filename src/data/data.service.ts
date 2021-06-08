@@ -6,11 +6,39 @@ import { data } from 'src/models/data.model';
 export class DataService {
     constructor(@InjectModel(data) private readonly dataModel: typeof data){}
 
-    async findAll():Promise<data[]>{
+    findAll():Promise<data[]>{
         return this.dataModel.findAll();
     }
 
-    async insertData(data:data){
+    findDataByID(id:number):Promise<data>{
+        return this.dataModel.findOne({
+            where:{
+                id
+            }
+        })
+    }
+
+    insertData(data:data){
         this.dataModel.create(data);
     }
+
+    deleteData(id:number){
+        this.dataModel.destroy({
+            where:{
+                id
+            }
+        })
+    }
+
+    updateData(id:number,data:data){
+        this.dataModel.update(data,{
+            where:{
+                id
+            }
+        })
+    }
+
+    
+
+    
 }
