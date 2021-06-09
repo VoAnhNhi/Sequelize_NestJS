@@ -12,4 +12,8 @@ export class UsersService {
             }
         })
     }
+
+    async addUser(newuser:any){
+        return this.userModel.create(newuser);
+    }
 }

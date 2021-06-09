@@ -24,4 +24,18 @@ export class AuthService {
             access_token : this.jwtService.sign(payload),
         };
     }
+
+    async signup(username:string,password:string){
+        var newUser = {username:username,password:password};
+        var user = await this.userService.findUser(username);
+        if(user ){
+            return {
+                message:"User already exist !!!"
+            }
+        }
+        await this.userService.addUser(newUser);
+        return {
+            message:"Add user success !!!"
+        }
+    }
 }
